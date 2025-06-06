@@ -5,20 +5,26 @@
     Objetivo:
         Devolver la subcadena palindroma más larga en s.
 
-    Sub objetivos:
-        1.Encontrar todas las subcadenas posibles en s.
-        2.Buscar la subcadena palindroma mas larga.
-        3.devolver la subcadena palindroma más larga.
+    Datos de entrada:
+        s <- cadena dada por el usuario.
+        subStr <- subcadena palindroma actual.
+        arrStr <- Registro de las subcadenas palindromas actuales.
+    Dato de salida:
+        palimStr <- subcadena palindroma más larga.
 
+    Algoritmo: 
+        1.Se inicializa subStr y arrStr vacías.
+        2.Se recorren todos los carácteres de s.
+            Por cada iteración:
+                1.Verificar si el carácter actual
 
-    Algoritmo para encontrar todas las subcadenas posibles:
-        Datos de entrada:
-            
-        Datos de salida:
-
-    Algoritmo para buscar la subcadena palindroma más larga:
-        Datos de entrada:
-        
-        Datos de salida:
-
+    
+    Sub algoritmo para evaluar si la cadena actual es palindroma:
+        1.Toma la subcadena pasada.
+        2.Invierte el orden de la subcadena y lo almacena en otra variable.
+        3.Se recorre la subcadena original.
+            Por cada iteración se verifica que el carácter actual sea el mismo en ambas.
+                Sí no es así:
+                    retornar false.
+        4.Retornar true.
 */
