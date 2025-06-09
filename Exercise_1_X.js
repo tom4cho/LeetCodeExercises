@@ -18,20 +18,13 @@
         3.Inicializar subStr en ""
         4.Recorrer cada carácter de la cadena s
             Por cada iteración:
-                1.Sumar 1 a length
-                2.Recorrer cada carácter de la cadena s
-                    Por cada iteración:
-                        1.Verificar si la longitud de subStr es menor a length
-                            Sí es menor:
-                                1.Verificar si la posición del carácter actual es la última de la cadena s
-                                    Sí es así:
-                                        1.Asignar al valor de subStr el carácter actual.
-                                        2.Continuar a la siguiente iteración.
-                                    Sí no es así
-                                        1.Concatenar el carácter actual a subStr.
-                            Si no es menor:
-                                1.Almacenar el valor de subStr en arrStr.
-                                2.Asignar al valor de subStr el carácter actual.
+                    1.Recorrer la cadena s desde length hasta el último carácter de s.
+                        Por cada iteración:
+                            1.Sumar el carácter en el indice actual a subStr.
+                            2.Almacenar el valor de subStr en arrStr.
+                    2.Asignar a subStr una cadena vacía.
+                    3.Sumar 1 a length
+                        
 
     Algoritmo: 
         1.Se inicializa subStr y arrStr vacías.
@@ -41,24 +34,39 @@
                     Si la función devuelve false
 
     
-    Sub algoritmo para evaluar si la cadena actual es palindroma:
-        1.Toma la subcadena pasada.
-        2.Invierte el orden de la subcadena y lo almacena en otra variable.
-        3.Se recorre la subcadena original.
-            Por cada iteración se verifica que el carácter actual sea el mismo en ambas.
-                Sí no es así:
-                    retornar false.
-        4.Retornar true.
+    Sub algoritmo para devolver las subcadenas palindromas:
+        1.Toma la un arreglo como argumento.
+        2.Incializa la variable isPalim en true.
+        3.Recorrer cada elemento del arreglo.
+            Por cada iteración:
+                1.Crear una copia de la cadena invertida.
+                2.Recorrer cada elemento
 */
 
 function findSubstrings(string) {
     let start = 0;
-    let subStr = [];
-    for (let i = 0; i < s.length; i++) {
-        for (let j = 0; j < s.length; j++) {
-            
-        }
-    }
-}
+    let subStr = "";
+    let arrStr = [];
 
+    for (let i = 0; i < string.length; i++) {
+        for (let j = start; j < string.length; j++) {
+            subStr += string[j]
+            arrStr.push(subStr)
+        }
+        subStr = "";
+        start += 1;
+    }
+
+    return arrStr;
+}
+console.log(verificarSubcadenas(findSubstrings("BananaRama")))
+console.log(findSubstrings("BananaRama"))
 let string = "pepe"
+
+function evalPalindrome(array) {
+    let palimArr = []
+
+    array.foreach((string) => {
+
+    })
+}
