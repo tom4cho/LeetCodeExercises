@@ -53,23 +53,19 @@
 */
 
 function findSubstrings(string) {
-    let start = 0;
     let subStr = "";
-    let arrStr = [];
+    let arrStr = new Set();
 
     for (let i = 0; i < string.length; i++) {
-        for (let j = start; j < string.length; j++) {
+        for (let j = i; j < string.length; j++) {
             subStr += string[j]
-            arrStr.push(subStr)
+            arrStr.add(subStr)
         }
         subStr = "";
-        start += 1;
     }
 
-    return arrStr;
+    return [...arrStr];
 }
-console.log(evalPalindrome(findSubstrings("BananaRama")))
-let string = "pepe"
 
 function evalPalindrome(array) {
     let palimArr = []
@@ -93,5 +89,16 @@ function evalPalindrome(array) {
 }
 
 function findLargestPalindrome(array) {
-    
+    let length = 0
+    let palim = ""
+    array.forEach((palindrome) => {
+        if(palindrome.length > length){
+            length = palindrome.length
+            palim = palindrome
+        }     
+    })
+
+    return palim
 }
+
+console.log(findLargestPalindrome(evalPalindrome(findSubstrings(string))))
