@@ -40,7 +40,16 @@
         3.Recorrer cada elemento del arreglo.
             Por cada iteración:
                 1.Crear una copia de la cadena invertida.
-                2.Recorrer cada elemento
+                2.Recorrer cada elemento elemento de la cadena invertida.
+                    Por cada iteración:
+                        1.Verificar si el carácter en el indice actual no es el mismo para la cadena invertida y la cadena original.
+                            Sí es así:
+                                1.Asignar false a isPalim.
+
+                3.Verificar si la variable isPalim es true
+                    Sí es así:
+                        1.Almacenar la cadena actual en palimArr.
+        4.Retornar palimArr.
 */
 
 function findSubstrings(string) {
@@ -59,14 +68,30 @@ function findSubstrings(string) {
 
     return arrStr;
 }
-console.log(verificarSubcadenas(findSubstrings("BananaRama")))
-console.log(findSubstrings("BananaRama"))
+console.log(evalPalindrome(findSubstrings("BananaRama")))
 let string = "pepe"
 
 function evalPalindrome(array) {
     let palimArr = []
+    array.forEach((string) => {
+        let isPalim = true
+        let inverted = string.split("").reverse().join("")
+        let i = 0
+        while (isPalim === true && i < inverted.length) {
+            if (inverted[i] != string[i]) {
+                isPalim = false
+            }
+            i++
+        }
 
-    array.foreach((string) => {
-
+        if (isPalim) {
+            palimArr.push(string)
+        }
     })
+
+    return palimArr
+}
+
+function findLargestPalindrome(array) {
+    
 }
