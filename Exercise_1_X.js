@@ -59,7 +59,9 @@ function findSubstrings(string) {
     for (let i = 0; i < string.length; i++) {
         for (let j = i; j < string.length; j++) {
             subStr += string[j]
-            arrStr.add(subStr)
+            if (evalPalindrome(subStr)) {
+                arrStr.add(subStr)
+            }
         }
         subStr = "";
     }
@@ -67,25 +69,13 @@ function findSubstrings(string) {
     return [...arrStr];
 }
 
-function evalPalindrome(array) {
-    let palimArr = []
-    array.forEach((string) => {
-        let isPalim = true
-        let inverted = string.split("").reverse().join("")
-        let i = 0
-        while (isPalim === true && i < inverted.length) {
-            if (inverted[i] != string[i]) {
-                isPalim = false
-            }
-            i++
-        }
+function evalPalindrome(string) {
+    const inverted = string.split("").reverse().join("")
+    if (inverted === string) {
+        return true
+    } 
 
-        if (isPalim) {
-            palimArr.push(string)
-        }
-    })
-
-    return palimArr
+    return false
 }
 
 function findLargestPalindrome(array) {
