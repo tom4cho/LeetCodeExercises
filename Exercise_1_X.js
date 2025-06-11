@@ -69,9 +69,9 @@ function findSubstrings(string) {
     return [...arrStr];
 }
 
-function evalPalindrome(string) {
-    const inverted = string.split("").reverse().join("")
-    if (inverted === string) {
+function evalPalindrome(paramstring) {
+    const inverted = paramstring.split("").reverse().join("")
+    if (inverted === paramstring) {
         return true
     } 
 
@@ -91,4 +91,6 @@ function findLargestPalindrome(array) {
     return palim
 }
 
-console.log(findLargestPalindrome(evalPalindrome(findSubstrings(string))))
+let string = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"
+
+console.log(findLargestPalindrome(findSubstrings(string)))
