@@ -18,20 +18,13 @@
         3.Inicializar subStr en ""
         4.Recorrer cada carácter de la cadena s
             Por cada iteración:
-                1.Sumar 1 a length
-                2.Recorrer cada carácter de la cadena s
-                    Por cada iteración:
-                        1.Verificar si la longitud de subStr es menor a length
-                            Sí es menor:
-                                1.Verificar si la posición del carácter actual es la última de la cadena s
-                                    Sí es así:
-                                        1.Asignar al valor de subStr el carácter actual.
-                                        2.Continuar a la siguiente iteración.
-                                    Sí no es así
-                                        1.Concatenar el carácter actual a subStr.
-                            Si no es menor:
-                                1.Almacenar el valor de subStr en arrStr.
-                                2.Asignar al valor de subStr el carácter actual.
+                    1.Recorrer la cadena s desde length hasta el último carácter de s.
+                        Por cada iteración:
+                            1.Sumar el carácter en el indice actual a subStr.
+                            2.Almacenar el valor de subStr en arrStr.
+                    2.Asignar a subStr una cadena vacía.
+                    3.Sumar 1 a length
+                        
 
     Algoritmo: 
         1.Se inicializa subStr y arrStr vacías.
@@ -41,24 +34,63 @@
                     Si la función devuelve false
 
     
-    Sub algoritmo para evaluar si la cadena actual es palindroma:
-        1.Toma la subcadena pasada.
-        2.Invierte el orden de la subcadena y lo almacena en otra variable.
-        3.Se recorre la subcadena original.
-            Por cada iteración se verifica que el carácter actual sea el mismo en ambas.
-                Sí no es así:
-                    retornar false.
-        4.Retornar true.
+    Sub algoritmo para devolver las subcadenas palindromas:
+        1.Toma la un arreglo como argumento.
+        2.Incializa la variable isPalim en true.
+        3.Recorrer cada elemento del arreglo.
+            Por cada iteración:
+                1.Crear una copia de la cadena invertida.
+                2.Recorrer cada elemento elemento de la cadena invertida.
+                    Por cada iteración:
+                        1.Verificar si el carácter en el indice actual no es el mismo para la cadena invertida y la cadena original.
+                            Sí es así:
+                                1.Asignar false a isPalim.
+
+                3.Verificar si la variable isPalim es true
+                    Sí es así:
+                        1.Almacenar la cadena actual en palimArr.
+        4.Retornar palimArr.
 */
 
 function findSubstrings(string) {
-    let start = 0;
-    let subStr = [];
-    for (let i = 0; i < s.length; i++) {
-        for (let j = 0; j < s.length; j++) {
-            
+    let subStr = "";
+    let arrStr = new Set();
+
+    for (let i = 0; i < string.length; i++) {
+        for (let j = i; j < string.length; j++) {
+            subStr += string[j]
+            if (evalPalindrome(subStr)) {
+                arrStr.add(subStr)
+            }
         }
+        subStr = "";
     }
+
+    return [...arrStr];
 }
 
-let string = "pepe"
+function evalPalindrome(paramstring) {
+    const inverted = paramstring.split("").reverse().join("")
+    if (inverted === paramstring) {
+        return true
+    } 
+
+    return false
+}
+
+function findLargestPalindrome(array) {
+    let length = 0
+    let palim = ""
+    array.forEach((palindrome) => {
+        if(palindrome.length > length){
+            length = palindrome.length
+            palim = palindrome
+        }     
+    })
+
+    return palim
+}
+
+let string = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"
+
+console.log(findLargestPalindrome(findSubstrings(string)))
