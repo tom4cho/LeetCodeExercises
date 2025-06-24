@@ -5,25 +5,34 @@
     Objetivo:
         Devolver la subcadena palindroma más larga en s.
 
-    Datos de entrada:
-        s <- cadena dada por el usuario.
-        subStr <- subcadena palindroma actual.
-        arrStr <- Registro de las subcadenas palindromas actuales.
-    Dato de salida:
-        palimStr <- subcadena palindroma más larga.
-
     Sub Algoritmo para hallar todas las cadenas:
-        1.Pasar la cadena s.
-        2.Inicializar length en 0.
-        3.Inicializar subStr en ""
-        4.Recorrer cada carácter de la cadena s
-            Por cada iteración:
-                    1.Recorrer la cadena s desde length hasta el último carácter de s.
-                        Por cada iteración:
-                            1.Sumar el carácter en el indice actual a subStr.
-                            2.Almacenar el valor de subStr en arrStr.
-                    2.Asignar a subStr una cadena vacía.
-                    3.Sumar 1 a length
+        Datos de entrada:
+            s <- cadena dada por el usuario.
+            subStr <- subcadena palindroma actual.
+            largestPalim <- El palindromo más largo almacenado actualmente.
+        Dato de salida:
+            palimStr <- subcadena palindroma más larga.
+        Pasos:
+            1.Tomar la cadena s como argumento.
+            2.Inicializar subStr en ""
+            3.Inicializar arrStr como un nuevo conjunto.
+            4.Recorrer cada carácter de la cadena s
+                Por cada iteración:
+                        1.Recorrer la cadena s desde el indice actual del bucle externo hasta el último carácter de s.
+                            Por cada iteración:
+                                1.Sumar el carácter en el indice actual a subStr.
+                                2.Verificar si 
+                                2.Almacenar el valor de subStr en arrStr.
+                        2.Asignar a subStr una cadena vacía.
+                        3.Sumar 1 a length
+
+    Sub algoritmo para verificar si una cadena es palindroma:
+        1.Toma una cadena como argumento.
+        2.Inicializa inverted con la cadena pasada como argumento con los carácteres invertidos.
+        3.Verifica que el valor de inverted sea igual a la cadena original.
+            Sí es así:
+                1.Retornar True.
+        4.Retornar False.
                         
 
     Algoritmo: 
@@ -33,64 +42,63 @@
                 1.Llamar la función encargada de evaluar la subcadena con la subcadena actual concatenada con el carácter de la iteración actual.
                     Si la función devuelve false
 
-    
-    Sub algoritmo para devolver las subcadenas palindromas:
-        1.Toma la un arreglo como argumento.
-        2.Incializa la variable isPalim en true.
-        3.Recorrer cada elemento del arreglo.
-            Por cada iteración:
-                1.Crear una copia de la cadena invertida.
-                2.Recorrer cada elemento elemento de la cadena invertida.
-                    Por cada iteración:
-                        1.Verificar si el carácter en el indice actual no es el mismo para la cadena invertida y la cadena original.
-                            Sí es así:
-                                1.Asignar false a isPalim.
-
-                3.Verificar si la variable isPalim es true
-                    Sí es así:
-                        1.Almacenar la cadena actual en palimArr.
-        4.Retornar palimArr.
 */
 
-function findSubstrings(string) {
+/*
+    1.Eliminar el conjunto arrStr.
+    2.Hacer una verificación directa de la longitud del palindromo actual con la longitud previa almacenada.
+    3.Retornar subStr.
+*/
+function findLargestPalindrome(string) {
     let subStr = "";
-    let arrStr = new Set();
+    let largestPalim = "";
 
     for (let i = 0; i < string.length; i++) {
         for (let j = i; j < string.length; j++) {
             subStr += string[j]
             if (evalPalindrome(subStr)) {
-                arrStr.add(subStr)
+                if (subStr.length > largestPalim.length) {
+                    largestPalim = subStr
+                }
             }
         }
         subStr = "";
     }
 
-    return [...arrStr];
+    return largestPalim;
 }
 
 function evalPalindrome(paramstring) {
-    const inverted = paramstring.split("").reverse().join("")
-    if (inverted === paramstring) {
-        return true
-    } 
+    for (let i = 0; i < paramstring.length / 2; i++) {
+        if (paramstring[i] != paramstring[paramstring.length - 1 - i]) {
+            return false
+        }    
+    }
+    // const inverted = paramstring.split("").reverse().join("")
+    // if (inverted === paramstring) {
+    //     return true
+    // } 
 
-    return false
+    return true
 }
 
-function findLargestPalindrome(array) {
-    let length = 0
-    let palim = ""
-    array.forEach((palindrome) => {
-        if(palindrome.length > length){
-            length = palindrome.length
-            palim = palindrome
-        }     
-    })
+// function findLargestPalindrome(array) {
+//     let length = 0
+//     let palim = ""
+//     array.forEach((palindrome) => {
+//         if(palindrome.length > length){
+//             length = palindrome.length
+//             palim = palindrome
+//         }     
+//     })
 
-    return palim
-}
+//     return palim
+// }
 
-let string = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"
+let string = "ibvjkmpyzsifuxcabqqpahjdeuzaybqsrsmbfplxycsafogotliyvhxjtkrbzqxlyfwujzhkdafhebvsdhkkdbhlhmaoxmbkqiwiusngkbdhlvxdyvnjrzvxmukvdfobzlmvnbnilnsyrgoygfdzjlymhprcpxsnxpcafctikxxybcusgjwmfklkffehbvlhvxfiddznwumxosomfbgxoruoqrhezgsgidgcfzbtdftjxeahriirqgxbhicoxavquhbkaomrroghdnfkknyigsluqebaqrtcwgmlnvmxoagisdmsokeznjsnwpxygjjptvyjjkbmkxvlivinmpnpxgmmorkasebngirckqcawgevljplkkgextudqaodwqmfljljhrujoerycoojwwgtklypicgkyaboqjfivbeqdlonxeidgxsyzugkntoevwfuxovazcyayvwbcqswzhytlmtmrtwpikgacnpkbwgfmpavzyjoxughwhvlsxsgttbcyrlkaarngeoaldsdtjncivhcfsaohmdhgbwkuemcembmlwbwquxfaiukoqvzmgoeppieztdacvwngbkcxknbytvztodbfnjhbtwpjlzuajnlzfmmujhcggpdcwdquutdiubgcvnxvgspmfumeqrofewynizvynavjzkbpkuxxvkjujectdyfwygnfsukvzflcuxxzvxzravzznpxttduajhbsyiywpqunnarabcroljwcbdydagachbobkcvudkoddldaucwruobfylfhyvjuynjrosxczgjwudpxaqwnboxgxybnngxxhibesiaxkicinikzzmonftqkcudlzfzutplbycejmkpxcygsafzkgudy"
 
-console.log(findLargestPalindrome(findSubstrings(string)))
+console.log(findLargestPalindrome(string))
+
+
+
+// MANACHER´S ALGORITHM
